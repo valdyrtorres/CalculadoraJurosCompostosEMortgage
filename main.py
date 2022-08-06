@@ -1,5 +1,6 @@
 import locale
 locale.setlocale(locale.LC_MONETARY, 'es_US')
+from mortgage import Loan
 
 from helpers import juros_compostos
 
@@ -10,3 +11,9 @@ if __name__ == '__main__':
 
     valor_final_a_pagar = juros_compostos(quantia_a_emprestar, taxa_juros_anual, prazo)
     print(f"O montante total calculado é de {locale.currency(valor_final_a_pagar, grouping=True)}.")
+
+    print()
+    print("Usando módulo Mortgage, classe Loan")
+
+    financiamento = Loan(quantia_a_emprestar, taxa_juros_anual/100, prazo, currency='R$')
+    print(financiamento.summarize)
